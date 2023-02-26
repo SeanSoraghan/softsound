@@ -7,41 +7,41 @@ import CanvasWrapper from "../components/CanvasWrapper"
 import Synth from "../audio/Synth"
 import EmbeddedVideo from "../components/EmbeddedVideo"
 
-var audioContext: AudioContext = new AudioContext();
-var demoSynth: Synth = new Synth(512, 200.0, 3);
+// var audioContext: AudioContext = new AudioContext();
+// var demoSynth: Synth = new Synth(512, 200.0, 3);
 
 //window.addEventListener('load', init, false);
 
-function init()
-{
-    try
-    {
-        // Fix up for prefixing
-        window.AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioContext = new AudioContext();
-    }
-    catch (e)
-    {
-        alert('Web Audio API is not supported in this browser');
-    }
-}
+// function init()
+// {
+//     try
+//     {
+//         // Fix up for prefixing
+//         window.AudioContext = window.AudioContext || window.webkitAudioContext;
+//         audioContext = new AudioContext();
+//     }
+//     catch (e)
+//     {
+//         alert('Web Audio API is not supported in this browser');
+//     }
+// }
 
 //https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
-function resumeAudio()
-{
-    console.log(audioContext);
-    if (audioContext && audioContext.state != "running")
-    {
-        audioContext.resume().then(() =>
-        {
-            //demoSynth = new Synth(context, 512, 200.0, 3);
-            console.log('Playback resumed successfully');
-            demoSynth.initOscs(audioContext);
-        });
-    }
-    // Test playing a sound
-    // demoSynth.play(1.0, audioContext);
-}
+// function resumeAudio()
+// {
+//     console.log(audioContext);
+//     if (audioContext && audioContext.state != "running")
+//     {
+//         audioContext.resume().then(() =>
+//         {
+//             //demoSynth = new Synth(context, 512, 200.0, 3);
+//             console.log('Playback resumed successfully');
+//             demoSynth.initOscs(audioContext);
+//         });
+//     }
+//     // Test playing a sound
+//     // demoSynth.play(1.0, audioContext);
+// }
 
 const DESKTOP_BREAKPOINT: string = "1280px";
 
