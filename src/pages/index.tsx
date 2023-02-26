@@ -1,11 +1,11 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import styled from "styled-components"
-import Logo from "./src/components/LogoComponent"
-import BulletText from "./src/components/BulletText"
-import CanvasWrapper from "./src/components/CanvasWrapper"
-import Synth from "./src/audio/Synth"
-import EmbeddedVideo from "./src/components/EmbeddedVideo"
+import Logo from "../components/LogoComponent"
+import BulletText from "../components/BulletText"
+import CanvasWrapper from "../components/CanvasWrapper"
+import Synth from "../audio/Synth"
+import EmbeddedVideo from "../components/EmbeddedVideo"
 
 var audioContext: AudioContext = new AudioContext();
 var demoSynth: Synth = new Synth(512, 200.0, 3);
