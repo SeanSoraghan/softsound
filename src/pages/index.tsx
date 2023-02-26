@@ -5,12 +5,12 @@ import Logo from "../components/LogoComponent"
 import BulletText from "../components/BulletText"
 import CanvasWrapper from "../components/CanvasWrapper"
 import Synth from "../audio/Synth"
+import EmbeddedVideo from "../components/EmbeddedVideo"
 
 var audioContext: AudioContext = new AudioContext();
-var demoSynth: Synth = new Synth(audioContext, 512, 200.0, 3);
+var demoSynth: Synth = new Synth(512, 200.0, 3);
 
-
-window.addEventListener('load', init, false);
+//window.addEventListener('load', init, false);
 
 function init()
 {
@@ -36,31 +36,68 @@ function resumeAudio()
         {
             //demoSynth = new Synth(context, 512, 200.0, 3);
             console.log('Playback resumed successfully');
+            demoSynth.initOscs(audioContext);
         });
     }
     // Test playing a sound
-    demoSynth.play(1.0);
+    // demoSynth.play(1.0, audioContext);
 }
+
+const DESKTOP_BREAKPOINT: string = "1280px";
 
 const Header = styled.h1`
+    text-align: left;
+    width: 100%;
     color: white;
     margin: 0;
+    font-family: "Josefin Sans";
+    font-weight: 100;
 `
 
-const pageStyles =
-{
-    color: "#232129",
-    fontFamily: "-apple-system, Roboto, sans-serif, serif",
-    backgroundColor: "black",
-    minHeight: "100vh"
-}
+const HeaderWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px;
+    gap: 80px;
+    background-color: black;
+    @media (min-width: ${DESKTOP_BREAKPOINT}){
+        justify-content: flex-start;
+        gap: 200px;
+    }
+`
+
+const VideoRowWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    @media (min-width: ${DESKTOP_BREAKPOINT}){
+        flex-direction: row;
+        gap: 0;
+    }
+`
 
 const IndexPage: React.FC<PageProps> = () =>
 {
+    //const ReactAudioContext = React.createContext(audioContext);
     return (
-        <main style={pageStyles}>
-            <div onMouseDown={resumeAudio} onTouchStart={resumeAudio} style={{ height: '50px', alignItems: 'center' }}><Header>Soft Sound</Header></div>
-            <CanvasWrapper width={window.innerWidth} height={240.0} synth={demoSynth} />
+        <main>
+            <HeaderWrapper>
+                <Header>softsound</Header>
+                <VideoRowWrapper>
+                    {/*1920x1080*/}
+                    <EmbeddedVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                    <EmbeddedVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                    <EmbeddedVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                </VideoRowWrapper>
+            </HeaderWrapper>
         </main>
     )
 }

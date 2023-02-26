@@ -27,7 +27,6 @@ interface ADSR
 
 class Env
 {
-    audioContext: AudioContext;
     envType: EnvType = EnvType.ONE_SHOT;
     envState: EnvState = EnvState.COMPLETE;
 
@@ -51,10 +50,8 @@ class Env
     onEnvStopped: Function = () => null; // Envelope completed cucle and stopped. Will not loop.
     onEnvReset: Function = () => null; // Envelope was reset, possibly mid-cycle.
 
-    constructor(audioContext: AudioContext);
-    constructor(audioContext: AudioContext, envType?: EnvType, adsr?: ADSR, sustainProportion?: number)
+    constructor(envType?: EnvType, adsr?: ADSR, sustainProportion?: number)
     {
-        this.audioContext = audioContext;
         this.envType = envType ?? EnvType.ONE_SHOT;
         this.attackTime = adsr?.attack ?? 0.1;
         this.decayTime = adsr?.decay ?? 0.1;
@@ -73,19 +70,18 @@ class Env
         this.onEnvReset();
     }
 
-    setAudioContext(audioContext: AudioContext) { this.audioContext = audioContext; }
     getAttackDecayTime() { return this.attackTime + this.decayTime; }
     getAttackDecaySustainTime() { return this.attackTime + this.decayTime; }
-    hasAttackDecayComplete() { return this.audioContext.currentTime > this.envStartTime + this.getAttackDecayTime(); }
-    hasAttackDecaySustainComplete() { return this.audioContext.currentTime > this.envStartTime + this.getAttackDecaySustainTime(); }
-    hasEnvComplete() { return this.audioContext.currentTime > this.releaseTriggerTime + this.releaseTime; }
+    hasAttackDecayComplete(currentTime: number) { return currentTime > this.envStartTime + this.getAttackDecayTime(); }
+    hasAttackDecaySustainComplete(currentTime: number) { return currentTime > this.envStartTime + this.getAttackDecaySustainTime(); }
+    hasEnvComplete(currentTime: number) { return currentTime > this.releaseTriggerTime + this.releaseTime; }
 
-    setState(state: EnvState)
+    setState(state: EnvState, time: number)
     {
         switch (state)
         {
             case EnvState.ATTACK:
-                this.envStartTime = this.audioContext.currentTime;
+                this.envStartTime = time;
                 this.onBeginAttack();
                 break;
             case EnvState.DECAY:
@@ -94,7 +90,7 @@ class Env
                 this.onBeginSustain();
                 break;
             case EnvState.RELEASE:
-                this.releaseTriggerTime = this.audioContext.currentTime;
+                this.releaseTriggerTime = time;
                 this.shouldRelease = false;
                 this.onBeginRelease();
                 break;
@@ -105,16 +101,19 @@ class Env
         this.envState = state;
     }
 
-    triggerAttackPortion() { this.setState(EnvState.ATTACK); }
-    triggerReleasePortion() { this.setState(EnvState.RELEASE); }
+    triggerAttackPortion(currentTime: number) { this.setState(EnvState.ATTACK, currentTime); }
+    triggerReleasePortion(currentTime: number) { this.setState(EnvState.RELEASE, currentTime); }
 
-    updateEnv()
+    updateEnv(audioContext: AudioContext)
     {
+        if (audioContext.state != "running")
+            return;
+
         if (this.envType != EnvType.INFINITE)
         {
-            if (this.envState === EnvState.ATTACK && this.hasAttackDecayComplete())
+            if (this.envState === EnvState.ATTACK && this.hasAttackDecayComplete(audioContext.currentTime))
             {
-                this.setState(EnvState.SUSTAIN);
+                this.setState(EnvState.SUSTAIN, audioContext.currentTime);
                 if (this.envType === EnvType.ONE_SHOT)
                     this.shouldRelease = true;
             }
@@ -122,25 +121,25 @@ class Env
             {
                 if (this.envType === EnvType.LOOPING)
                 {
-                    this.shouldRelease = this.hasAttackDecaySustainComplete()
+                    this.shouldRelease = this.hasAttackDecaySustainComplete(audioContext.currentTime)
                 }
                 if (this.shouldRelease)
                 {
-                    this.setState(EnvState.RELEASE);
+                    this.setState(EnvState.RELEASE, audioContext.currentTime);
                 }
             }
             if (this.envState === EnvState.RELEASE)
             {
-                if (this.hasEnvComplete())
+                if (this.hasEnvComplete(audioContext.currentTime))
                 {
-                    this.setState(EnvState.COMPLETE);
+                    this.setState(EnvState.COMPLETE, audioContext.currentTime);
                 }
             }
             if (this.envState === EnvState.COMPLETE)
             {
                 if (this.envType === EnvType.LOOPING && !this.shouldStopLooping)
                 {
-                    this.setState(EnvState.ATTACK);
+                    this.setState(EnvState.ATTACK, audioContext.currentTime);
                 }
                 else
                 {

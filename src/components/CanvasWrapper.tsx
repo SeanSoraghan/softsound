@@ -1,12 +1,10 @@
 import React, { useRef, useState } from "react"
 import * as THREE from "three";
 import { Canvas, useFrame, Vector3, Props } from "react-three-fiber"
-import Synth from "../audio/Synth"
 
 interface BoxProps
 {
-    position: Vector3,
-    synth?: Synth
+    position: Vector3
 }
 
 const Box = (props: BoxProps) =>
@@ -25,7 +23,6 @@ const Box = (props: BoxProps) =>
 
     useFrame((state, delta, xrFrame) =>
     {
-        props.synth?.envelope.updateEnv();
         // This function runs at the native refresh rate inside of a shared render-loop
         mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
     })
@@ -40,7 +37,6 @@ const Box = (props: BoxProps) =>
             onPointerDown={e =>
             {
                 setActive(true);
-                props.synth?.play(1.0);
             }}
             onPointerUp={e => setActive(false)}
         >
@@ -53,30 +49,24 @@ const Box = (props: BoxProps) =>
     )
 }
 
-interface ThreeCanvasProps
-{
-    synth: Synth
-}
-
-const ThreeCanvas = (props: ThreeCanvasProps) => (
+const ThreeCanvas = () => (
     <Canvas>
         <ambientLight />
         <pointLight position={[0, 0, 0]} />
-        <Box position={[2.0, 0, 0]} synth={props.synth} />
-        <Box position={[-2.0, 0, 0]} synth={props.synth} />
+        <Box position={[2.0, 0, 0]} />
+        <Box position={[-2.0, 0, 0]} />
     </Canvas>
 )
 
 interface CanvasWrapperProps
 {
     width: number,
-    height: number,
-    synth: Synth
+    height: number
 }
 
 const CanvasWrapper = (props: CanvasWrapperProps) => (
     <div style={{ width: props.width, height: props.height }}>
-        <ThreeCanvas synth={props.synth} />
+        <ThreeCanvas />
     </div>
 )
 export default CanvasWrapper
