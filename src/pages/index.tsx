@@ -44,6 +44,24 @@ import EmbeddedVideo from "../components/EmbeddedVideo"
 // }
 
 const DESKTOP_BREAKPOINT: string = "1280px";
+const HEADER_FONT_SIZE: string = "64px";
+const SUBHEADER_FONT_SIZE: string = "22px";
+const CONTENT_GAP: string = "80px"
+const CONTENT_GAP_DESKTOP: string = "200px";
+
+const ContentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 32px;
+    gap: ${CONTENT_GAP};
+    background-color: black;
+    @media (min-width: ${DESKTOP_BREAKPOINT}){
+        gap: ${CONTENT_GAP_DESKTOP};
+    }
+`
 
 const Header = styled.h1`
     text-align: left;
@@ -52,21 +70,26 @@ const Header = styled.h1`
     margin: 0;
     font-family: "Josefin Sans";
     font-weight: 100;
+    font-size: ${HEADER_FONT_SIZE};
+`
+
+const SubHeader = styled.div`
+    text-align: left;
+    width: 100%;
+    color: white;
+    margin: 0;
+    font-family: "Josefin Sans";
+    font-weight: 100;
+    font-size: ${SUBHEADER_FONT_SIZE};
 `
 
 const HeaderWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 32px;
-    gap: 80px;
+    align-items: bottom;
+    justify-content: flex-start;
+    width: 100%;
     background-color: black;
-    @media (min-width: ${DESKTOP_BREAKPOINT}){
-        justify-content: flex-start;
-        gap: 200px;
-    }
 `
 
 const VideoRowWrapper = styled.div`
@@ -89,15 +112,18 @@ const IndexPage: React.FC<PageProps> = () =>
     //const ReactAudioContext = React.createContext(audioContext);
     return (
         <main>
-            <HeaderWrapper>
-                <Header>softsound</Header>
+            <ContentWrapper>
+                <HeaderWrapper>
+                    <Header>softsound</Header>
+                    <SubHeader>sean@softsound.uk</SubHeader>
+                </HeaderWrapper>
                 <VideoRowWrapper>
                     {/*1920x1080*/}
                     <EmbeddedVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                     <EmbeddedVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                     <EmbeddedVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                 </VideoRowWrapper>
-            </HeaderWrapper>
+            </ContentWrapper>
         </main>
     )
 }
