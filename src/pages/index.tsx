@@ -1,11 +1,9 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import styled from "styled-components"
-import Logo from "../components/LogoComponent"
-import BulletText from "../components/BulletText"
 import CanvasWrapper from "../components/CanvasWrapper"
 import Synth from "../audio/Synth"
 import EmbeddedVideo from "../components/EmbeddedVideo"
+import * as SC from "../components/styled-components"
 
 // var audioContext: AudioContext = new AudioContext();
 // var demoSynth: Synth = new Synth(512, 200.0, 3);
@@ -43,91 +41,27 @@ import EmbeddedVideo from "../components/EmbeddedVideo"
 //     // demoSynth.play(1.0, audioContext);
 // }
 
-const DESKTOP_BREAKPOINT: string = "1280px";
-const HEADER_FONT_SIZE: string = "64px";
-const SUBHEADER_FONT_SIZE: string = "22px";
-const CONTENT_GAP: string = "80px"
-const CONTENT_GAP_DESKTOP: string = "200px";
-
-const ContentWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    padding: 32px;
-    gap: ${CONTENT_GAP};
-    background-color: black;
-    @media (min-width: ${DESKTOP_BREAKPOINT}){
-        gap: ${CONTENT_GAP_DESKTOP};
-    }
-`
-
-const Header = styled.h1`
-    text-align: left;
-    width: 100%;
-    color: white;
-    margin: 0;
-    font-family: "Josefin Sans";
-    font-weight: 100;
-    font-size: ${HEADER_FONT_SIZE};
-`
-
-const SubHeader = styled.div`
-    text-align: left;
-    width: 100%;
-    color: white;
-    margin: 0;
-    font-family: "Josefin Sans";
-    font-weight: 100;
-    font-size: ${SUBHEADER_FONT_SIZE};
-`
-
-const HeaderWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: bottom;
-    justify-content: flex-start;
-    width: 100%;
-    background-color: black;
-`
-
-const VideoRowWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    width: 100%;
-    background-color: black;
-    color: white;
-    @media (min-width: ${DESKTOP_BREAKPOINT}){
-        flex-direction: row;
-        gap: 0;
-    }
-`
-
 const IndexPage: React.FC<PageProps> = () =>
 {
     //const ReactAudioContext = React.createContext(audioContext);
     return (
         <main>
-            <ContentWrapper>
-                <HeaderWrapper>
-                    <Header>softsound</Header>
-                    <SubHeader>sean@softsound.uk</SubHeader>
-                </HeaderWrapper>
-                <VideoRowWrapper>
+            <SC.ContentWrapper>
+                <SC.HeaderWrapper>
+                    <SC.Header>softsound</SC.Header>
+                    <SC.SubHeader>sean@softsound.uk</SC.SubHeader>
+                </SC.HeaderWrapper>
+                <SC.VideoRowWrapper>
                     {/*1920x1080*/}
                     <EmbeddedVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                     <EmbeddedVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                     <EmbeddedVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
-                </VideoRowWrapper>
-            </ContentWrapper>
+                </SC.VideoRowWrapper>
+            </SC.ContentWrapper>
         </main>
     )
 }
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Soft Sound | Home</title>
