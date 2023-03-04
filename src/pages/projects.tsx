@@ -5,8 +5,8 @@ import * as SC from "../components/styled-components"
 import styled from "styled-components";
 import type { HeadFC, PageProps } from "gatsby"
 import { getImage, StaticImage } from 'gatsby-plugin-image'
-import { ProjectsContent } from "../content/ProjectsContent";
-import Project from "../components/ProjectComponent"
+import VideoComponent from "../components/Video";
+import { Projects } from "../content/projects-content";
 
 const ProjectHeader = styled.h2`
     color: white;
@@ -27,6 +27,7 @@ const ProjectText = styled.h3`
     margin: 0;
     font-family: "Heebo";
     font-weight: 100;
+    white-space: pre-line;
 `
 
 const ProjectImageTextWrapper = styled.div`
@@ -51,16 +52,6 @@ const ProjectWrapper = styled.div`
     background-color: black;
 `
 
-const ProjectListWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    gap: ${Layout.PROJECTS_LIST_GAP};
-    width: 100%;
-    background-color: black;
-`
-
 const ProjectsPage: React.FC<PageProps> = () =>
 {
     return (
@@ -70,14 +61,16 @@ const ProjectsPage: React.FC<PageProps> = () =>
                 <ProjectHeader>Baldur's Gate III - Larian Studios</ProjectHeader>
                 <ProjectImageTextWrapper>
                     <ProjectImage><StaticImage alt="" src={'../images/bg3.jpg'} aspectRatio={1920 / 1080} /></ProjectImage>
-                    <ProjectText>I'm currently helping with technical sound design for the upcoming Baldur's Gate III, working with the fantastic audio team at Larian Studios. It's something of a dream role for me because Divinity Original Sin II was one of my favourite games in recent memory.</ProjectText>
+                    <ProjectText>{Projects.bgText}</ProjectText>
                 </ProjectImageTextWrapper>
             </ProjectWrapper>
             <ProjectWrapper>
-                <ProjectHeader>Baldur's Gate III - Larian Studios</ProjectHeader>
+                <ProjectHeader>Impacter Wwise Plugin - Audiokinetic</ProjectHeader>
                 <ProjectImageTextWrapper>
-                    <ProjectImage><StaticImage alt="" src={'../images/bg3.jpg'} aspectRatio={1920 / 1080} /></ProjectImage>
-                    <ProjectText>I'm currently helping with technical sound design for the upcoming Baldur's Gate III, working with the fantastic audio team at Larian Studios. It's something of a dream role for me because Divinity Original Sin II was one of my favourite games in recent memory.</ProjectText>
+                    <ProjectImage>
+                        <VideoComponent title="Impacter Plugin - Audiokinetic" embedURL="https://www.youtube.com/embed/tSgAbM6N7lw" />
+                    </ProjectImage>
+                    <ProjectText>{Projects.impacterText}</ProjectText>
                 </ProjectImageTextWrapper>
             </ProjectWrapper>
         </SC.ContentWrapper>

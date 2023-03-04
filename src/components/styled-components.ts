@@ -29,7 +29,7 @@ export const SubHeader = styled.div`
     width: 100%;
     color: white;
     margin: 0;
-    font-family: "Josefin Sans";
+    font-family: "Heebo";
     font-weight: 100;
     font-size: ${Layout.SUBHEADER_FONT_SIZE};
 `
@@ -73,3 +73,24 @@ export const VideoRowWrapper = styled.div`
         gap: 0;
     }
 `
+
+// https://medium.com/bleeding-edge/enforcing-an-aspect-ratio-on-an-html-element-in-react-and-css-27a13241c3d4
+
+export const BorderlessIFrameWrapper = styled.div`
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+`
+export const BorderlessIFrame = styled.iframe`
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+`
+
+// ------------------------------------------------------

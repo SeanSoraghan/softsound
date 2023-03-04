@@ -2,7 +2,7 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import CanvasWrapper from "../components/CanvasWrapper"
 import Synth from "../audio/Synth"
-import EmbeddedVideo from "../components/EmbeddedVideo"
+import TitledVideo from "../components/TitledVideo"
 import * as SC from "../components/styled-components"
 
 // var audioContext: AudioContext = new AudioContext();
@@ -53,9 +53,9 @@ const IndexPage: React.FC<PageProps> = () =>
                 </SC.HeaderWrapper>
                 <SC.VideoRowWrapper>
                     {/*1920x1080*/}
-                    <EmbeddedVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
-                    <EmbeddedVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
-                    <EmbeddedVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                    <TitledVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                    <TitledVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                    <TitledVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                 </SC.VideoRowWrapper>
             </SC.ContentWrapper>
         </main>
