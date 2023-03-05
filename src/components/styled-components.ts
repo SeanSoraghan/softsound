@@ -23,6 +23,9 @@ export const Header = styled.h1`
     font-family: "Josefin Sans";
     font-weight: 100;
     font-size: ${Layout.HEADER_FONT_SIZE};
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        font-size: ${Layout.DESKTOP_HEADER_FONT_SIZE};
+    }
 `
 
 export const SubHeader = styled.div`
@@ -49,6 +52,10 @@ export const SubpageSubheader = styled.h2`
     margin: 0;
     font-family: "Heebo";
     font-weight: 100;
+    font-size: ${Layout.SUBPAGE_LINK_FONT_SIZE};
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        font-size: ${Layout.DESKTOP_SUBPAGE_LINK_FONT_SIZE};
+    }
 `
 export const SubpageHeaderWrapper = styled.div`
     display: flex;
