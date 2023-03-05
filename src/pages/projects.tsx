@@ -8,6 +8,9 @@ import { getImage, StaticImage } from 'gatsby-plugin-image'
 import VideoComponent from "../components/Video";
 import { Projects } from "../content/projects-content";
 
+const PROJECT_MEDIA_DESKTOP_WIDTH_PX: string = "640px";
+const PROJECT_MEDIA_DESKTOP_WIDTH: number = 640;
+
 const ProjectHeader = styled.h2`
     color: white;
     margin: 0;
@@ -28,7 +31,15 @@ const ProjectText = styled.h3`
     font-family: "Heebo";
     font-weight: 100;
     white-space: pre-line;
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        width: 50%;
+    }
 `
+
+interface ProjectImageTextWrapperProps
+{
+    reverseImageTextOrder?: boolean
+}
 
 const ProjectImageTextWrapper = styled.div`
     display: flex;
@@ -37,7 +48,7 @@ const ProjectImageTextWrapper = styled.div`
     justify-content: center;
     gap: ${Layout.PROJECT_IMAGE_TEXT_GAP};
     @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
-        flex-direction: row;
+        flex-direction: ${(props: ProjectImageTextWrapperProps) => (props.reverseImageTextOrder ? "row-reverse" : "row")};
         width: 100%;
     }
 `
@@ -66,11 +77,36 @@ const ProjectsPage: React.FC<PageProps> = () =>
             </ProjectWrapper>
             <ProjectWrapper>
                 <ProjectHeader>Impacter Wwise Plugin - Audiokinetic</ProjectHeader>
-                <ProjectImageTextWrapper>
+                <ProjectImageTextWrapper reverseImageTextOrder>
                     <ProjectImage>
                         <VideoComponent title="Impacter Plugin - Audiokinetic" embedURL="https://www.youtube.com/embed/tSgAbM6N7lw" />
                     </ProjectImage>
                     <ProjectText>{Projects.impacterText}</ProjectText>
+                </ProjectImageTextWrapper>
+            </ProjectWrapper>
+            <ProjectWrapper>
+                <ProjectHeader>Wwise Unreal Spatial Audio Features - Audiokinetic</ProjectHeader>
+                <ProjectImageTextWrapper>
+                    <ProjectImage>
+                        <VideoComponent title="Wwise Unreal Integration - Audiokinetic" embedURL="https://www.youtube.com/embed/mjzCPgUcjiA?start=28" />
+                    </ProjectImage>
+                    <ProjectText>{Projects.akUnrealText}</ProjectText>
+                </ProjectImageTextWrapper>
+            </ProjectWrapper>
+            <ProjectWrapper>
+                <ProjectHeader>Ambisonics 3D Meter - Audiokinetic</ProjectHeader>
+                <ProjectImageTextWrapper reverseImageTextOrder>
+                    <ProjectImage><StaticImage alt="" src={'../images/AK3DMeter.png'} aspectRatio={1920 / 1080} /></ProjectImage>
+                    <ProjectText>{Projects.ak3DMeterText}</ProjectText>
+                </ProjectImageTextWrapper>
+            </ProjectWrapper>
+            <ProjectWrapper>
+                <ProjectHeader>KIMA - The Wheel - Analema Group</ProjectHeader>
+                <ProjectImageTextWrapper>
+                    <ProjectImage>
+                        <VideoComponent title="KIMA - Analema Group" embedURL="https://www.youtube.com/embed/ySDcSYw5jC0" />
+                    </ProjectImage>
+                    <ProjectText>{Projects.kimaText}</ProjectText>
                 </ProjectImageTextWrapper>
             </ProjectWrapper>
         </SC.ContentWrapper>
