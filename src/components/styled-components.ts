@@ -1,5 +1,6 @@
 import * as Layout from "../utils/LayoutConstants"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 export const ContentWrapper = styled.div`
     display: flex;
@@ -72,6 +73,11 @@ export const VideoRowWrapper = styled.div`
         flex-direction: row;
         gap: 0;
     }
+`
+
+export const StyledLink = styled(Link)`
+  color: aqua;
+  text-decoration: none;
 `
 
 // https://medium.com/bleeding-edge/enforcing-an-aspect-ratio-on-an-html-element-in-react-and-css-27a13241c3d4

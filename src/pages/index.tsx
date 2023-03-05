@@ -1,5 +1,7 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+import { Link } from "gatsby"
+import styled from "styled-components"
 import CanvasWrapper from "../components/CanvasWrapper"
 import Synth from "../audio/Synth"
 import TitledVideo from "../components/TitledVideo"
@@ -41,6 +43,8 @@ import * as SC from "../components/styled-components"
 //     // demoSynth.play(1.0, audioContext);
 // }
 
+
+
 const IndexPage: React.FC<PageProps> = () =>
 {
     //const ReactAudioContext = React.createContext(audioContext);
@@ -48,7 +52,10 @@ const IndexPage: React.FC<PageProps> = () =>
         <main>
             <SC.ContentWrapper>
                 <SC.HeaderWrapper>
-                    <SC.Header>softsound</SC.Header>
+                    <SC.SubpageHeaderWrapper>
+                        <SC.Header>softsound</SC.Header>
+                        <SC.SubpageSubheader> / <SC.StyledLink to="/projects" activeStyle={{}}>projects</SC.StyledLink></SC.SubpageSubheader>
+                    </SC.SubpageHeaderWrapper>
                     <SC.SubHeader>sean@softsound.uk</SC.SubHeader>
                 </SC.HeaderWrapper>
                 <SC.VideoRowWrapper>

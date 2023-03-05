@@ -4,6 +4,7 @@ import * as Layout from "../utils/LayoutConstants"
 import * as SC from "../components/styled-components"
 import styled from "styled-components";
 import type { HeadFC, PageProps } from "gatsby"
+import { Link } from "gatsby"
 import { getImage, StaticImage } from 'gatsby-plugin-image'
 import VideoComponent from "../components/Video";
 import { Projects } from "../content/projects-content";
@@ -67,7 +68,7 @@ const ProjectsPage: React.FC<PageProps> = () =>
 {
     return (
         <SC.ContentWrapper>
-            <SC.SubpageHeaderWrapper><SC.Header>softsound</SC.Header><SC.SubpageSubheader> / projects</SC.SubpageSubheader></SC.SubpageHeaderWrapper>
+            <SC.SubpageHeaderWrapper><SC.Header><SC.StyledLink to="/">softsound</SC.StyledLink></SC.Header><SC.SubpageSubheader> / projects</SC.SubpageSubheader></SC.SubpageHeaderWrapper>
             <ProjectWrapper>
                 <ProjectHeader>Baldur's Gate III - Larian Studios</ProjectHeader>
                 <ProjectImageTextWrapper>
