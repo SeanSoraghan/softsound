@@ -6,6 +6,7 @@ import CanvasWrapper from "../components/CanvasWrapper"
 import Synth from "../audio/Synth"
 import TitledVideo from "../components/TitledVideo"
 import * as SC from "../components/styled-components"
+import HeaderNavBar from "../components/HeaderNavBarComponent"
 
 // var audioContext: AudioContext = new AudioContext();
 // var demoSynth: Synth = new Synth(512, 200.0, 3);
@@ -52,10 +53,11 @@ const IndexPage: React.FC<PageProps> = () =>
         <main>
             <SC.ContentWrapper>
                 <SC.HeaderWrapper>
-                    <SC.SubpageHeaderWrapper>
+                    {/* <SC.SubpageHeaderWrapper>
                         <SC.Header>softsound</SC.Header>
                         <SC.SubpageSubheader> / <SC.StyledLink to="/projects" activeStyle={{}}>projects</SC.StyledLink></SC.SubpageSubheader>
-                    </SC.SubpageHeaderWrapper>
+                    </SC.SubpageHeaderWrapper> */}
+                    <HeaderNavBar currentItemName="softsound" />
                     <SC.SubHeader>sean@softsound.uk</SC.SubHeader>
                 </SC.HeaderWrapper>
                 <SC.VideoRowWrapper>

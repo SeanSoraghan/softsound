@@ -91,7 +91,7 @@ export const VideoRowWrapper = styled.div`
 `
 
 export const StyledLink = styled(Link)`
-  color: aqua;
+  color: silver;
   text-decoration: none;
 `
 

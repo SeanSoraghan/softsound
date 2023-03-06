@@ -8,6 +8,7 @@ import { Link } from "gatsby"
 import { getImage, StaticImage } from 'gatsby-plugin-image'
 import VideoComponent from "../components/Video";
 import { Projects } from "../content/projects-content";
+import HeaderNavBar from "../components/HeaderNavBarComponent";
 
 const PROJECT_MEDIA_DESKTOP_WIDTH_PX: string = "640px";
 const PROJECT_MEDIA_DESKTOP_WIDTH: number = 640;
@@ -68,7 +69,8 @@ const ProjectsPage: React.FC<PageProps> = () =>
 {
     return (
         <SC.ContentWrapper>
-            <SC.SubpageHeaderWrapper><SC.Header><SC.StyledLink to="/">softsound</SC.StyledLink></SC.Header><SC.SubpageSubheader> / projects</SC.SubpageSubheader></SC.SubpageHeaderWrapper>
+            {/* <SC.SubpageHeaderWrapper><SC.Header><SC.StyledLink to="/">softsound</SC.StyledLink></SC.Header><SC.SubpageSubheader> / projects</SC.SubpageSubheader></SC.SubpageHeaderWrapper> */}
+            <HeaderNavBar currentItemName="projects" />
             <ProjectWrapper>
                 <ProjectHeader>Baldur's Gate III - Larian Studios</ProjectHeader>
                 <ProjectImageTextWrapper>
