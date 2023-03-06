@@ -36,6 +36,9 @@ export const SubHeader = styled.div`
     font-family: "Heebo";
     font-weight: 100;
     font-size: ${Layout.SUBHEADER_FONT_SIZE};
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        font-size: ${Layout.DESKTOP_SUBHEADER_FONT_SIZE};
+    }
 `
 
 export const HeaderWrapper = styled.div`

@@ -1,11 +1,12 @@
 export const DESKTOP_BREAKPOINT: string = "1280px";
 export const HEADER_FONT_SIZE: string = "48px";
 export const DESKTOP_HEADER_FONT_SIZE: string = "64px";
-export const SUBHEADER_FONT_SIZE: string = "22px";
+export const SUBHEADER_FONT_SIZE: string = "16px";
+export const DESKTOP_SUBHEADER_FONT_SIZE: string = "22px";
 export const CONTENT_GAP: string = "80px"
 export const CONTENT_GAP_DESKTOP: string = "120px";
 export const HEADER_EMAIL_GAP: string = "24px";
-export const SUBPAGE_LINK_FONT_SIZE: string = "18px";
+export const SUBPAGE_LINK_FONT_SIZE: string = "22px";
 export const DESKTOP_SUBPAGE_LINK_FONT_SIZE: string = "24px";
 export const PROJECT_CONTENT_GAP: string = "24px";
 export const PROJECTS_LIST_GAP: string = "72px";
