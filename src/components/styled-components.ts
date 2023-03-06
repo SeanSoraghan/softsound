@@ -41,6 +41,7 @@ export const SubHeader = styled.div`
 export const HeaderWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    gap: ${Layout.HEADER_EMAIL_GAP};
     align-items: bottom;
     justify-content: flex-start;
     width: 100%;
@@ -59,12 +60,16 @@ export const SubpageSubheader = styled.h2`
 `
 export const SubpageHeaderWrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    gap: 24px;
+    flex-direction: column;
+    gap: 0px;
     align-items: bottom;
     justify-content: flex-start;
     width: 100%;
     background-color: black;
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        flex-direction: row;
+        gap: 24px;
+    }
 `
 
 export const VideoRowWrapper = styled.div`
