@@ -1,10 +1,8 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import CanvasWrapper from "../components/CanvasWrapper"
-import Synth from "../audio/Synth"
 import TitledVideo from "../components/TitledVideo"
+import { StaticImage } from 'gatsby-plugin-image'
+import VideoComponent from "../components/Video";
 import * as SC from "../components/styled-components"
 import HeaderNavBar from "../components/HeaderNavBarComponent"
 
@@ -52,20 +50,40 @@ const IndexPage: React.FC<PageProps> = () =>
     return (
         <main>
             <SC.ContentWrapper>
-                <SC.HeaderWrapper>
-                    {/* <SC.SubpageHeaderWrapper>
-                        <SC.Header>softsound</SC.Header>
-                        <SC.SubpageSubheader> / <SC.StyledLink to="/projects" activeStyle={{}}>projects</SC.StyledLink></SC.SubpageSubheader>
-                    </SC.SubpageHeaderWrapper> */}
-                    <HeaderNavBar currentItemName="softsound" />
-                    <SC.SubHeader>sean@softsound.uk</SC.SubHeader>
-                </SC.HeaderWrapper>
-                <SC.VideoRowWrapper>
-                    {/*1920x1080*/}
-                    <TitledVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
-                    <TitledVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
-                    <TitledVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
-                </SC.VideoRowWrapper>
+                <HeaderNavBar currentItemName="softsound" />
+                {/* <SC.VideoRowWrapper> */}
+                {/*1920x1080*/}
+                {/* <TitledVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" /> */}
+                {/* <TitledVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" /> */}
+                {/* <TitledVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" /> */}
+                {/* </SC.VideoRowWrapper> */}
+                <SC.MediaWrapper>
+                    {/* <SC.MediaHeader>Baldur's Gate III - Larian Studios</SC.MediaHeader> */}
+                    <SC.MediaTextWrapper>
+                        <SC.MediaTextCentredLarge>Sound Design.</SC.MediaTextCentredLarge>
+                        <SC.Media>
+                            <VideoComponent title="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                        </SC.Media>
+                    </SC.MediaTextWrapper>
+                </SC.MediaWrapper>
+                <SC.MediaWrapper>
+                    {/* <SC.MediaHeader>Impacter Wwise Plugin - Audiokinetic</SC.MediaHeader> */}
+                    <SC.MediaTextWrapper reverseImageTextOrder>
+                        <SC.MediaTextCentredLarge>Sound Integration.</SC.MediaTextCentredLarge>
+                        <SC.Media>
+                            <VideoComponent title="Sound Integration" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                        </SC.Media>
+                    </SC.MediaTextWrapper>
+                </SC.MediaWrapper>
+                <SC.MediaWrapper>
+                    {/* <SC.MediaHeader>Wwise Unreal Spatial Audio Features - Audiokinetic</SC.MediaHeader> */}
+                    <SC.MediaTextWrapper>
+                        <SC.MediaTextCentredLarge>Audio Programming.</SC.MediaTextCentredLarge>
+                        <SC.Media>
+                            <VideoComponent title="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
+                        </SC.Media>
+                    </SC.MediaTextWrapper>
+                </SC.MediaWrapper>
             </SC.ContentWrapper>
         </main>
     )

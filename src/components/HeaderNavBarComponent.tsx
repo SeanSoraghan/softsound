@@ -1,7 +1,5 @@
 import React from "react"
-import * as Layout from "../utils/LayoutConstants"
 import * as SC from "../components/styled-components"
-import styled from "styled-components";
 import NavItem from "./NavItem";
 
 interface HeaderNavBarProps
@@ -10,14 +8,14 @@ interface HeaderNavBarProps
 }
 
 const HeaderNavBar = (props: HeaderNavBarProps) => (
-    <SC.SubpageHeaderWrapper>
-        <SC.Header>
+    <SC.NavBarWrapper>
+        <SC.NavBarMainPage>
             <NavItem currentItemName={props.currentItemName} itemName="softsound" />
-        </SC.Header>
-        <SC.SubpageSubheader>
-            / <NavItem currentItemName={props.currentItemName} itemName="about" /> - <NavItem currentItemName={props.currentItemName} itemName="projects" /> - <NavItem currentItemName={props.currentItemName} itemName="contact" />
-        </SC.SubpageSubheader>
-    </SC.SubpageHeaderWrapper>
+        </SC.NavBarMainPage>
+        <SC.NavBarSubPagesWrapper>
+            / <NavItem currentItemName={props.currentItemName} itemName="about" /><NavItem currentItemName={props.currentItemName} itemName="projects" />
+        </SC.NavBarSubPagesWrapper>
+    </SC.NavBarWrapper>
 );
 
 export default HeaderNavBar;

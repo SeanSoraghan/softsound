@@ -1,6 +1,6 @@
 export const Projects = {
     bgText: "I'm currently helping with technical sound design for the upcoming Baldur's Gate III, working with the fantastic audio team at Larian Studios. " +
-        "It's something of a dream project to work on for me because Divinity Original Sin II was one of my favourite games in recent memory." +
+        "It's something of a dream project to work on for me; Divinity Original Sin II was one of my favourite games in recent memory." +
         "\n\nAs a technical sound designer on the project, I'm writing a lot of Python scripts for Wwise, helping smooth out the workflow of the asset generation pipeline. " +
         "I'm also helping out with technical implementation both in Wwise and in Larian's in-house game engine, as well as working on sound design and sound systemics.",
     impacterText: "I worked on the C++ implementation for the Impacter Wwise plugin. This was an extremely fun project to work on, " +

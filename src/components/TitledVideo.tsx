@@ -1,7 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import * as SC from "./styled-components"
 import VideoComponent from "./Video";
 
 const VideoHeader = styled.h2`

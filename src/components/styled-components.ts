@@ -5,18 +5,16 @@ import { Link } from "gatsby"
 export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: calc(100vh - ${Layout.OUTER_PADDING_DOUBLE});
     padding: 32px;
     gap: ${Layout.CONTENT_GAP};
     background-color: black;
-    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
-        gap: ${Layout.CONTENT_GAP_DESKTOP};
-    }
 `
 
-export const Header = styled.h1`
+export const NavBarMainPage = styled.h1`
+    display: flex;
     text-align: left;
     color: white;
     margin: 0;
@@ -28,30 +26,12 @@ export const Header = styled.h1`
     }
 `
 
-export const SubHeader = styled.div`
-    text-align: left;
-    width: 100%;
-    color: white;
-    margin: 0;
-    font-family: "Heebo";
-    font-weight: 100;
-    font-size: ${Layout.SUBHEADER_FONT_SIZE};
-    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
-        font-size: ${Layout.DESKTOP_SUBHEADER_FONT_SIZE};
-    }
-`
-
-export const HeaderWrapper = styled.div`
+export const NavBarSubPagesWrapper = styled.h2`
     display: flex;
-    flex-direction: column;
-    gap: ${Layout.HEADER_EMAIL_GAP};
-    align-items: bottom;
+    flex-direction: row;
     justify-content: flex-start;
+    gap: 12px;
     width: 100%;
-    background-color: black;
-`
-
-export const SubpageSubheader = styled.h2`
     color: white;
     margin: 0;
     font-family: "Heebo";
@@ -61,7 +41,7 @@ export const SubpageSubheader = styled.h2`
         font-size: ${Layout.DESKTOP_SUBPAGE_LINK_FONT_SIZE};
     }
 `
-export const SubpageHeaderWrapper = styled.div`
+export const NavBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0px;
@@ -90,9 +70,116 @@ export const VideoRowWrapper = styled.div`
     }
 `
 
+export const MediaHeader = styled.h2`
+    color: white;
+    margin: 0;
+    font-family: "Heebo";
+    font-weight: 100;
+    font-size: ${Layout.MEDIA_TEXT_LARGE_SIZE};
+`
+
+export const Media = styled.div`
+    width: 100%;
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        width: 50%;
+    }
+`
+
+export const MediaText = styled.h3`
+    color: white;
+    margin: 0;
+    font-family: "Heebo";
+    font-weight: 100;
+    white-space: pre-line;
+    font-size: ${Layout.MEDIA_TEXT_SIZE};
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        width: 50%;
+    }
+`
+
+export const AboutMediaText = styled.h3`
+    color: white;
+    margin: 0;
+    font-family: "Heebo";
+    font-weight: 100;
+    white-space: pre-line;
+    font-size: ${Layout.ABOUT_MEDIA_TEXT_SIZE};
+`
+
+export const AboutMediaTextBold = styled.h4`
+    color: white;
+    margin: 0;
+    font-family: "Heebo";
+    font-weight: 400;
+    white-space: pre-line;
+    font-size: ${Layout.ABOUT_MEDIA_TEXT_SIZE};
+`
+
+export const AboutMediaTextEmailWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        width: 50%;
+    }
+`
+
+export const MediaTextCentredLarge = styled.h3`
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: white;
+    margin: 0;
+    font-family: "Heebo";
+    font-weight: 100;
+    white-space: pre-line;
+    font-size: ${Layout.MEDIA_TEXT_LARGE_SIZE};
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        width: 50%;
+        font-size: ${Layout.DESKTOP_MEDIA_TEXT_LARGE_SIZE};
+        justify-content: center;
+    }
+`
+
+interface MediaTextWrapperProps
+{
+    reverseImageTextOrder?: boolean
+}
+
+export const MediaTextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap: ${Layout.MEDIA_TEXT_GAP};
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        flex-direction: ${(props: MediaTextWrapperProps) => (props.reverseImageTextOrder ? "row-reverse" : "row")};
+        width: 100%;
+        gap: ${Layout.DESKTOP_MEDIA_TEXT_GAP};
+    }
+`
+
+export const MediaWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap: ${Layout.MEDIA_HEADER_CONTENT_GAP};
+    width: 100%;
+    background-color: black;
+`
+
+export const Paragraph = styled.h3`
+    align-items: left;
+    color: white;
+    margin: 0;
+    font-family: "Heebo";
+    font-weight: 100;
+    white-space: pre-line;
+`
 export const StyledLink = styled(Link)`
-  color: silver;
+  color: teal;
   text-decoration: none;
+  font-weight: 400;
 `
 
 // https://medium.com/bleeding-edge/enforcing-an-aspect-ratio-on-an-html-element-in-react-and-css-27a13241c3d4
