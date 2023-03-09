@@ -1,4 +1,5 @@
 import * as Layout from "../utils/LayoutConstants"
+import * as Colours from "../utils/Colours"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -212,13 +213,13 @@ export const StyledLink = styled(Link)`
 `
 
 export const StyledLinkHome = styled(Link)`
-  color: black;
+  color: #014D4E;
   text-decoration: none;
   font-weight: 400;
 `
 
 export const InactiveLinkCurrentPage = styled.div`
-  color: #1b3234ff;
+  color: black;
   text-decoration: overline;
 `
 

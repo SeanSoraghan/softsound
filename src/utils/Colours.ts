@@ -1,0 +1,1 @@
+export const darkteal: string = "#1b3234ff";
