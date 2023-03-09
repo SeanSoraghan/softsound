@@ -9,22 +9,17 @@ const AboutPage: React.FC<PageProps> = () =>
 {
     return (
         <main>
-            <SC.ContentWrapper>
-                <HeaderNavBar currentItemName="about" />
-                <SC.MediaWrapper>
-                    {/* <SC.MediaHeader>Baldur's Gate III - Larian Studios</SC.MediaHeader> */}
-                    <SC.MediaTextWrapper reverseImageTextOrder>
-                        <SC.Media><StaticImage alt="" src={'../images/office.png'} aspectRatio={1920 / 1080} /></SC.Media>
-                        <SC.AboutMediaTextEmailWrapper><SC.AboutMediaText>{aboutText}</SC.AboutMediaText><SC.AboutMediaTextBold>sean@softsound.uk</SC.AboutMediaTextBold></SC.AboutMediaTextEmailWrapper>
-                    </SC.MediaTextWrapper>
-                </SC.MediaWrapper>
-            </SC.ContentWrapper>
-            {/* <SC.ContentWrapper>
-                <HeaderNavBar currentItemName="about" />
-                <SC.Paragraph>Hello. I'm Sean Soraghan, a technical sound designer and audio programmer specialising in interactive audio.</SC.Paragraph>
-                <SC.Paragraph>I'm based in Glasgow, Scotland, and I operate as the limited company Soft Sound Limited.</SC.Paragraph>
-                <SC.Paragraph>You can reach me at sean@softsound.uk</SC.Paragraph>
-            </SC.ContentWrapper> */}
+            <HeaderNavBar currentItemName="about" />
+            <SC.OuterWrapper>
+                <SC.ContentWrapper>
+                    <SC.MediaWrapper>
+                        <SC.MediaTextWrapper reverseImageTextOrder>
+                            <SC.Media><StaticImage alt="" src={'../images/office.png'} aspectRatio={1920 / 1080} /></SC.Media>
+                            <SC.AboutMediaTextEmailWrapper><SC.AboutMediaText>{aboutText}</SC.AboutMediaText><SC.AboutMediaTextBold>sean@softsound.uk</SC.AboutMediaTextBold></SC.AboutMediaTextEmailWrapper>
+                        </SC.MediaTextWrapper>
+                    </SC.MediaWrapper>
+                </SC.ContentWrapper>
+            </SC.OuterWrapper>
         </main>
     )
 }

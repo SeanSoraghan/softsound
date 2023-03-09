@@ -49,42 +49,29 @@ const IndexPage: React.FC<PageProps> = () =>
     //const ReactAudioContext = React.createContext(audioContext);
     return (
         <main>
-            <SC.ContentWrapper>
-                <HeaderNavBar currentItemName="softsound" />
-                {/* <SC.VideoRowWrapper> */}
-                {/*1920x1080*/}
-                {/* <TitledVideo header="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" /> */}
-                {/* <TitledVideo header="Technical Implementation" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" /> */}
-                {/* <TitledVideo header="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" /> */}
-                {/* </SC.VideoRowWrapper> */}
-                <SC.MediaWrapper>
-                    {/* <SC.MediaHeader>Baldur's Gate III - Larian Studios</SC.MediaHeader> */}
-                    <SC.MediaTextWrapper>
+            <HeaderNavBar currentItemName="softsound" />
+            <SC.OuterWrapper>
+                <SC.ContentWrapper>
+                    <SC.MediaWrapperHome>
                         <SC.MediaTextCentredLarge>Sound Design.</SC.MediaTextCentredLarge>
                         <SC.Media>
                             <VideoComponent title="Sound Design" embedURL="https://player.vimeo.com/video/802257789?h=d8e5179c5b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                         </SC.Media>
-                    </SC.MediaTextWrapper>
-                </SC.MediaWrapper>
-                <SC.MediaWrapper>
-                    {/* <SC.MediaHeader>Impacter Wwise Plugin - Audiokinetic</SC.MediaHeader> */}
-                    <SC.MediaTextWrapper reverseImageTextOrder>
+                    </SC.MediaWrapperHome>
+                    <SC.MediaWrapperHome reverseImageTextOrder>
                         <SC.MediaTextCentredLarge>Sound Integration.</SC.MediaTextCentredLarge>
                         <SC.Media>
                             <VideoComponent title="Sound Integration" embedURL="https://player.vimeo.com/video/802257866?h=fddec7f716&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                         </SC.Media>
-                    </SC.MediaTextWrapper>
-                </SC.MediaWrapper>
-                <SC.MediaWrapper>
-                    {/* <SC.MediaHeader>Wwise Unreal Spatial Audio Features - Audiokinetic</SC.MediaHeader> */}
-                    <SC.MediaTextWrapper>
+                    </SC.MediaWrapperHome>
+                    <SC.MediaWrapperHome>
                         <SC.MediaTextCentredLarge>Audio Programming.</SC.MediaTextCentredLarge>
                         <SC.Media>
                             <VideoComponent title="Audio Programming" embedURL="https://player.vimeo.com/video/802257945?h=3e9481b528&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
                         </SC.Media>
-                    </SC.MediaTextWrapper>
-                </SC.MediaWrapper>
-            </SC.ContentWrapper>
+                    </SC.MediaWrapperHome>
+                </SC.ContentWrapper>
+            </SC.OuterWrapper>
         </main>
     )
 }

@@ -2,15 +2,28 @@ import * as Layout from "../utils/LayoutConstants"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
+export const OuterWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: ${Layout.OUTER_PADDING};
+    background-color: black;
+`
+
 export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     justify-content: flex-start;
-    min-height: calc(100vh - ${Layout.OUTER_PADDING_DOUBLE});
-    padding: 32px;
+    width: 100%;
+    min-height: calc(100vh - (${Layout.OUTER_PADDING_DOUBLE} + ${Layout.NAV_BAR_PADDING_DOUBLE} + ${Layout.NAV_BAR_TEXT_HEIGHT_PX}));
     gap: ${Layout.CONTENT_GAP};
     background-color: black;
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        min-height: calc(100vh - (${Layout.OUTER_PADDING_DOUBLE} + ${Layout.NAV_BAR_PADDING_DOUBLE} + ${Layout.DESKTOP_NAV_BAR_TEXT_HEIGHT_PX}));
+        max-width: ${Layout.DESKTOP_CONTENT_MAX_WIDTH};
+    }
 `
 
 export const NavBarMainPage = styled.h1`
@@ -29,30 +42,27 @@ export const NavBarMainPage = styled.h1`
 export const NavBarSubPagesWrapper = styled.h2`
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    gap: 12px;
-    width: 100%;
+    justify-content: flex-end;
+    gap: ${Layout.NAV_LINK_GAP_SIZE};
     color: white;
     margin: 0;
-    font-family: "Heebo";
+    width: 100%;
+    font-family: "Josefin Sans";
     font-weight: 100;
     font-size: ${Layout.SUBPAGE_LINK_FONT_SIZE};
     @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
         font-size: ${Layout.DESKTOP_SUBPAGE_LINK_FONT_SIZE};
+        justify-content: flex-end;
     }
 `
 export const NavBarWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 0px;
+    flex-direction: row;
+    gap: ${Layout.NAV_LINK_GAP_SIZE};
     align-items: bottom;
     justify-content: flex-start;
-    width: 100%;
-    background-color: black;
-    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
-        flex-direction: row;
-        gap: 24px;
-    }
+    background-color: white;
+    padding: ${Layout.NAV_BAR_PADDING};
 `
 
 export const VideoRowWrapper = styled.div`
@@ -168,6 +178,25 @@ export const MediaWrapper = styled.div`
     background-color: black;
 `
 
+interface MediaWrapperHomeProps
+{
+    reverseImageTextOrder?: boolean
+}
+
+export const MediaWrapperHome = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap:  ${Layout.MEDIA_HEADER_CONTENT_GAP};
+    width: 100%;
+    background-color: black;
+    @media (min-width: ${Layout.DESKTOP_BREAKPOINT}){
+        flex-direction: ${(props: MediaWrapperHomeProps) => (props.reverseImageTextOrder ? "row-reverse" : "row")};
+        gap: ${Layout.DESKTOP_HOME_MEDIA_TEXT_GAP};
+    }
+`
+
 export const Paragraph = styled.h3`
     align-items: left;
     color: white;
@@ -177,9 +206,25 @@ export const Paragraph = styled.h3`
     white-space: pre-line;
 `
 export const StyledLink = styled(Link)`
-  color: teal;
+  color: #014D4E;
   text-decoration: none;
   font-weight: 400;
+`
+
+export const StyledLinkHome = styled(Link)`
+  color: black;
+  text-decoration: none;
+  font-weight: 400;
+`
+
+export const InactiveLinkCurrentPage = styled.div`
+  color: #1b3234ff;
+  text-decoration: overline;
+`
+
+export const InactiveLinkCurrentPageHome = styled.div`
+  color: black;
+  text-decoration: overline;
 `
 
 // https://medium.com/bleeding-edge/enforcing-an-aspect-ratio-on-an-html-element-in-react-and-css-27a13241c3d4

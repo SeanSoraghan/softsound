@@ -10,8 +10,12 @@ interface NavItemProps
 const NavItem = (props: NavItemProps) =>
 {
     const isLink: boolean = props.currentItemName != props.itemName;
+    const isHomeLink: boolean = props.itemName == "softsound"
     return (
-        <>{isLink ? (<SC.StyledLink to={"/" + (props.itemName == "softsound" ? "" : props.itemName)}>{props.itemName}</SC.StyledLink>) : (<>{props.itemName}</>)}</>
+        <>{
+            !isLink ? (isHomeLink ? (<SC.InactiveLinkCurrentPageHome>{props.itemName}</SC.InactiveLinkCurrentPageHome>) : (<SC.InactiveLinkCurrentPage>{props.itemName}</SC.InactiveLinkCurrentPage>))
+                : isHomeLink ? <SC.StyledLinkHome to={"/"}>{props.itemName}</SC.StyledLinkHome> : (<SC.StyledLink to={"/" + props.itemName}>{props.itemName}</SC.StyledLink>)
+        }</>
     )
 };
 
