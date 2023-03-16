@@ -60,6 +60,8 @@ class Synth
 
     initOscs(audioContext: AudioContext)
     {
+        console.log("In initOscs: ")
+        console.log(audioContext)
         for (let oscIndex: number = 0; oscIndex < this.numOscs; ++oscIndex)
         {
             this.oscs.push(audioContext.createOscillator());
@@ -96,10 +98,14 @@ class Synth
             osc.start();
         }
         console.log("Initialized synth");
+        console.log(this.oscs[0]);
     }
 
-    play(velocity: number, audioContext: AudioContext)
+    play(velocity: number, audioContext: AudioContext | undefined)
     {
+        if (audioContext == undefined)
+            return;
+
         console.log(audioContext);
         console.log(audioContext.state);
         if (audioContext.state != "running")

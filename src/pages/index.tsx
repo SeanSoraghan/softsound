@@ -1,7 +1,5 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import TitledVideo from "../components/TitledVideo"
-import { StaticImage } from 'gatsby-plugin-image'
 import VideoComponent from "../components/Video";
 import * as SC from "../components/styled-components"
 import HeaderNavBar from "../components/HeaderNavBarComponent"

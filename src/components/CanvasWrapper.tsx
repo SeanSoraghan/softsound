@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
 import * as THREE from "three";
 import { Canvas, useFrame, Vector3, Props } from "react-three-fiber"
+import Synth from "../audio/Synth";
 
 interface BoxProps
 {

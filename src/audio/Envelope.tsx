@@ -43,12 +43,12 @@ class Env
     shouldRelease: boolean = false;
     shouldStopLooping: boolean = false;
 
-    onBeginAttack: Function = () => null;
-    onBeginSustain: Function = () => null;
-    onBeginRelease: Function = () => null;
-    onEnvComplete: Function = () => null; // Envelope completed cycle. May loop.
-    onEnvStopped: Function = () => null; // Envelope completed cucle and stopped. Will not loop.
-    onEnvReset: Function = () => null; // Envelope was reset, possibly mid-cycle.
+    onBeginAttack: Function = (time: number) => null;
+    onBeginSustain: Function = (time: number) => null;
+    onBeginRelease: Function = (time: number) => null;
+    onEnvComplete: Function = (time: number) => null; // Envelope completed cycle. May loop.
+    onEnvStopped: Function = (time: number) => null; // Envelope completed cucle and stopped. Will not loop.
+    onEnvReset: Function = (time: number) => null; // Envelope was reset, possibly mid-cycle.
 
     constructor(envType?: EnvType, adsr?: ADSR, sustainProportion?: number)
     {
@@ -78,24 +78,30 @@ class Env
 
     setState(state: EnvState, time: number)
     {
+        console.log("Set State:");
         switch (state)
         {
             case EnvState.ATTACK:
+                console.log("Attack");
                 this.envStartTime = time;
-                this.onBeginAttack();
+                this.onBeginAttack(time);
                 break;
             case EnvState.DECAY:
+                console.log("Decay");
                 break;
             case EnvState.SUSTAIN:
-                this.onBeginSustain();
+                console.log("Sustain");
+                this.onBeginSustain(time);
                 break;
             case EnvState.RELEASE:
+                console.log("Release");
                 this.releaseTriggerTime = time;
                 this.shouldRelease = false;
-                this.onBeginRelease();
+                this.onBeginRelease(time);
                 break;
             case EnvState.COMPLETE:
-                this.onEnvComplete();
+                console.log("Complete");
+                this.onEnvComplete(time);
                 break;
         }
         this.envState = state;
@@ -104,8 +110,11 @@ class Env
     triggerAttackPortion(currentTime: number) { this.setState(EnvState.ATTACK, currentTime); }
     triggerReleasePortion(currentTime: number) { this.setState(EnvState.RELEASE, currentTime); }
 
-    updateEnv(audioContext: AudioContext)
+    updateEnv(audioContext: AudioContext | undefined)
     {
+        if (audioContext == undefined)
+            return
+
         if (audioContext.state != "running")
             return;
 
