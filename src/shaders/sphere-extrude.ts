@@ -11,9 +11,9 @@ varying vec3 vert;
 void main()
 {
 	vec3 col = vec3 (0.0);
-	vec3 eye = vec3 (0.0, 0.0, 100.0);
+	vec3 eye = vec3 (0.0, 0.0, -100.0);
 	vec3 ray = normalize (eye - vert);
-	float diffuse = dot (ray, norm);// * 0.01;
+	float diffuse = dot (ray, norm) * 0.5;
 
 	float highlight = pow (1.0 - diffuse, 2.0);
 	float dist = distance (vec3 (0.0), vert);
@@ -46,7 +46,7 @@ void main()
 	float inclination = acos (position.z / r);
 	float azimuth 	  = atan (position.y / position.x);
 
-	vec2 normedMouse = normalize(vec2(mouseX * 2.0 - 1.0, mouseY * 2.0 - 1.0));
+	vec2 normedMouse = normalize(vec2(mouseX, mouseY));
 	//cos, 0, sin
 	//0, 1, 0
 	//-sin, 0, cos
@@ -74,8 +74,8 @@ void main()
 	float inclinationAmp = 0.1;//10.5;
 	float inclinationAmpEnv = 0.001;//(sin (time * 0.15) * 3.0) * 0.1;//rms;
 	float azimuthAmpEnv = 0.001;//(sin (time * 0.1) * 0.5 + 0.5) * 0.1;//rms;
-	vec3 extruded = rotatedPos + rotatedNorm * sin (azimuth * 20.0) * 0.01
-							   + rotatedNorm * sin (inclination * 15.0) * 0.1;
+	vec3 extruded = rotatedPos + rotatedNorm * sin (azimuth * 20.0) * 0.05
+							   + rotatedNorm * sin (inclination * 18.0) * 0.1 * mouseY;
 
 	norm = rotatedNorm;
 	vert = extruded;

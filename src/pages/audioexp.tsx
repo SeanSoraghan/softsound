@@ -15,8 +15,8 @@ const AudioExpPage: React.FC<PageProps> = () =>
 
     const onAddBtnClick = () =>
     {
-        setAudioDemo(
-            <Canvas><AudioComponent /></Canvas>);
+        setAudioDemo(<Canvas><AudioComponent /></Canvas>);
+        //setAudioDemo(<AudioComponent />);
     };
     return (
         <main>
